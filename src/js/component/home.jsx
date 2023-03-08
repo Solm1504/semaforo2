@@ -1,26 +1,20 @@
-import React from "react";
+import React, { useState } from 'react';
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+const colors = ['red', 'yellow', 'green'];
 
-//create your first component
-const Home = () => {
-	return (
-		<div className="text-center">
-			<h1 className="text-center mt-5">Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working...
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
-		</div>
-	);
+const Semaphore = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  setInterval(() => {
+    setCurrentIndex((currentIndex + 1) % colors.length);
+  }, 3000);
+
+  const currentColor = colors[currentIndex];
+
+  return (
+    <div style={{ width: 100, height: 100, borderRadius: '50%', background: currentColor }}></div>
+  );
 };
 
-export default Home;
+export default Semaphore;
+
